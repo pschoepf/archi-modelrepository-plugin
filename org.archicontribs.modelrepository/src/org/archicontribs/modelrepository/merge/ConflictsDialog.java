@@ -161,7 +161,7 @@ class ConflictsDialog extends ExtendedTitleAreaDialog {
         ((GridData)tabFolder.getLayoutData()).horizontalSpan = 2;
         
         createMainTabItem();
-        createPropertiesTabItem();
+        createAttributesTabItem();
         // (we will create the View TabItem on demand)
         
         // Ours /Theirs buttons
@@ -336,15 +336,15 @@ class ConflictsDialog extends ExtendedTitleAreaDialog {
     }
 
     // =====================================
-    // Properties Composite
+    // Attributes Composite
     // =====================================
     
-    private TabItem createPropertiesTabItem() {
+    private TabItem createAttributesTabItem() {
         SashForm sash = new SashForm(tabFolder, SWT.HORIZONTAL);
         sash.setBackground(sash.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
         
-        fTabComposites.add(new PropertiesComposite(sash, MergeObjectInfo.OURS));
-        fTabComposites.add(new PropertiesComposite(sash, MergeObjectInfo.THEIRS));
+        fTabComposites.add(new AttributesComposite(sash, MergeObjectInfo.OURS));
+        fTabComposites.add(new AttributesComposite(sash, MergeObjectInfo.THEIRS));
         
         TabItem item = new TabItem(tabFolder, SWT.NONE);
         item.setText(Messages.ConflictsDialog_18);
@@ -353,10 +353,10 @@ class ConflictsDialog extends ExtendedTitleAreaDialog {
         return item;
     }
     
-    private class PropertiesComposite extends TabComposite {
+    private class AttributesComposite extends TabComposite {
         private TableViewer propertiesTableViewer;
 
-        PropertiesComposite(Composite parent, int choice) {
+        AttributesComposite(Composite parent, int choice) {
             super(parent, choice);
             
             Composite tableComp = new Composite(this, SWT.BORDER);
